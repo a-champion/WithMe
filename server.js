@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 
-const appController = require ('./controller/withMe.js')
+const appController = require ('./controllers/withMe.js')
 
 //test
 // app.get('/', (req, res) => {
