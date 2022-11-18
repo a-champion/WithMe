@@ -1,6 +1,10 @@
 // Dependencies
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+
+
+
 
 let PORT = 3000;
 if(process.env.PORT){
@@ -12,5 +16,9 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('listening');
+    console.log('listening...');
 });
+
+mongoose.connect('mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/?retryWrites=true&w=majority', () => {
+    console.log('connected to mongo');
+})
