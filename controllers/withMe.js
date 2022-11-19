@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 // const data = require('../models/schema.js');
 
-test
+// test
 router.get('/', (req, res) => {
-    res.send('Hello WithMe');
+    res.send('Hello WithMe Router');
 });
 
 module.exports = router;

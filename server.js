@@ -1,24 +1,36 @@
-// Dependencies
+// Dependencies //
+//express
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
+
+// mongoose
+require('dotenv/config');
+const mongoose = require('mongoose');
+// const mongoURI = 'mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/collectibles?retryWrites=true&w=majority';
 const db = mongoose.connection;
-const methodOverride = require('method-override');
+
+//controller
+const appController = require ('./controllers/withMe.js');
+
+//method override
+// const methodOverride = require('method-override');
+// app.use(methodOverride('_method'));
+
+
 //config
-app.use(methodOverride('_method'));
 let PORT = 3000;
 if(process.env.PORT){
     PORT = process.env.PORT
 }
-app.use(express.urlencoded({extended: true}));
+
+//body parser
+// app.use(express.urlencoded({extended: true}));
 // app.use(express.json());
-// 
 
-app.use(express.static('public'));
+//static
+// app.use(express.static('public'));
 
-const appController = require ('./controllers/withMe.js')
-
-//test
+// test
 // app.get('/', (req, res) => {
 //     res.send('Hello WithMe');
 // });
@@ -31,6 +43,10 @@ app.listen(PORT, () => {
     console.log('listening...');
 });
 
-mongoose.connect('mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/?retryWrites=true&w=majority', () => {
-    console.log('connected to mongo');
-})
+mongoose.connect(process.env.DB_CONNECTION, () => {
+    console.log('connected to mongo atlas');
+});
+
+db.on('error', (err) => console.log(err.message));
+db.on('connected', () => console.log('mongo connected'));
+db.on('disconnected', () => console.log('mongo disconnected'));
