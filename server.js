@@ -14,9 +14,10 @@ if(process.env.PORT){
     PORT = process.env.PORT
 }
 
+//redirect to 
 //controller
 const appController = require('./controllers/withMe.js');
-app.use('/WithMe', appController);
+app.use(appController);
 
 //method override
 // const methodOverride = require('method-override');

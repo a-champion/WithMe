@@ -7,6 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>INDEX PAGE</h1>
+    <div id="headerAsideContainer">
+        <h1>WithME</h1>
+        <div id="navContainer">
+
+        </div>
+    </div>
+    <div id="homeMain">
+        <h2>Index</h2>
+        <ul>
+            <% for(let i = 0; i < collectables.length; i++){%>
+                <li>
+                    <a href="/collectables/<%=collectables[i].id;%>">
+                        <%=collectables.name;%>
+                    </a>
+                </li>
+
+            <%}%>
+        </ul>
+
+    </div>
+    <div id="footerContainer">
+
+    </div>
 </body>
 </html>
