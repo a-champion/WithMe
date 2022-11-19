@@ -50,7 +50,7 @@ app.listen(PORT, () => {
     console.log('listening...');
 });
 
-mongoose.connect(process.env.DB_CONNECTION || 'mongodb://127.0.0.1:27017/WithMe', () => {
+mongoose.connect('mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/?retryWrites=true&w=majority', () => {
     console.log('connected to mongo atlas');
 });
 
