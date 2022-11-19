@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const collectableSchema = new mongoose.Schema({
+const collectableSchema = new Schema({
     type: {type: String, required: true},
     name: {type: String, required: true},
-    height: {type: Number, required: true},
-    width: {type: Number, required: true},
+    size: {type: String, required: true},
     owned: {type: Boolean, required: true},
     unopened: {type: Boolean, required: true},
     /////////////////////////////////////////
@@ -17,7 +17,9 @@ const collectableSchema = new mongoose.Schema({
     quantity: {type: Number, required: false},
     custom: {type: Boolean, required: false},
     note: {type: String, required: false},
-    tags: {type: [String], required: false}
+    tags: {type: [String], required: false},
+    height: {type: Number, required: false},
+    width: {type: Number, required: false},
 });
 
 const collection = mongoose.model('Collectable', collectableSchema);

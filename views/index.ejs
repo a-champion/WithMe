@@ -16,14 +16,14 @@
     <div id="homeMain">
         <h2>Index</h2>
         <ul>
-            <% for(let i = 0; i < collectables.length; i++){%>
+            <% for(let i = 0; i < collectables.length; i++) {%>
                 <li>
-                    <a href="/collectables/<%=collectables[i].id;%>">
-                        <%=collectables.name;%>
+                    <a href="/collectables/<%=collectables[i]._id;%>">
+                        <%=collectables[i].name;%>
                     </a>
                 </li>
 
-            <%}%>
+            <% } %>
         </ul>
 
     </div>

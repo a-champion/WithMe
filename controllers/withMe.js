@@ -42,9 +42,10 @@ router.get('/seed', (req, res) => {
                 note: 'comes with 3 kittens!'
             }
 
-        ],
-        (err, data) => {
-            res.redirect('/');
+        ], (err, data) => {
+            res.send('/', {
+                collectables: data
+            });
         }
     )
 });
