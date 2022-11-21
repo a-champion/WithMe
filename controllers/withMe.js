@@ -44,9 +44,9 @@ router.post('/', (req, res) => {
 
     Collectable.create(req.body, (err, newCollectable) => {
         if(req.body.done === 'Done') {
-            res.redirect('/');
+            res.redirect('/collection');
         } else {
-            res.redirect('/new');
+            res.redirect('/collection/new');
         }
     });
 });
@@ -62,15 +62,53 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// });
-// //update
-// router.get('/', (req, res) => {
-//     res.send('Hello WithMe Router');
-// });
-// //delete
-// router.get('/', (req, res) => {
-//     res.send('Hello WithMe Router');
-// });
+//edit
+router.get('/:id/edit', (req, res) => {
+    Collectable.findById(req.params.id, (err, foundCollectable) => {
+        res.render(
+            'edit.ejs', 
+            {
+                collectable: foundCollectable
+            }
+        );
+    });
+});
+
+//update
+router.put('/:id', (req, res) => {
+    if(req.body.owned === 'on'){
+        req.body.owned = true;
+    } else {
+        req.body.owned = false;
+    }
+    if(req.body.unopened === 'on'){
+        req.body.unopened = true;
+    } else {
+        req.body.unopened = false;
+    }
+    if(req.body.boxed === 'on'){
+        req.body.boxed = true;
+    } else {
+        req.body.boxed = false;
+    }
+    if(req.body.custom === 'on'){
+        req.body.custom = true;
+    } else {
+        req.body.custom = false;
+    }
+    let stringToSplit = req.body.tags;
+    (req.body.tags) = stringToSplit.split(',');
+    Collectable.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem) => {
+        res.redirect('/collection');
+    });
+});
+
+//delete
+router.delete('/:id', (req, res) => {
+    Collectable.findByIdAndRemove(req.params.id, (err, deletedData) => {
+        res.redirect('/collection');
+    })
+});
 
 //seed
 // router.get('/seed', (req, res) => {

@@ -17,15 +17,19 @@ if(process.env.PORT){
 app.use(express.urlencoded({extended: true}));
 // app.use(express.json());
 
+//method override
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
+app.get('/', (req, res) => {
+    res.send('LANDING');
+});
 //redirect to 
 //controller
 const collectionController = require('./controllers/withMe.js');
-app.use('/', collectionController);
+app.use('/collection', collectionController);
 
-//method override
-// const methodOverride = require('method-override');
-// app.use(methodOverride('_method'));
+
 
 //build path
 // if (process.env.NODE_ENV === 'production') {
