@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %>
+    <div id="showCollectable">
+        <h2><%=collectable.name;%></h2>
+        <h3><%=collectable.type;%></h3>
+        <% if(collectable.image === ''){ %>
+        <% } else if(collectable.image) {%>
+            <img src='url(<%=collectable.image;%>)'>
+        <% } %>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                    Details
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <%=collectable.name;%>
+                </td>
+                <td>
+                    Franchise:
+                </td>
+                <td>
+                    <%=collectable.franchise;%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Value:
+                </td>
+                <td>
+                    <%=collectable.value;%>
+                </td>
+                <td>
+                    Brand:
+                </td>
+                <td>
+                    <%=collectable.brand;%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Owned:
+                </td>
+                <td>
+                    <%=collectable.owned;%>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

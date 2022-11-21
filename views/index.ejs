@@ -7,18 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="headerAsideContainer">
-        <h1>WithME</h1>
-        <div id="navContainer">
-
-        </div>
-    </div>
+    <%- include('./partials/header.ejs') %>
     <div id="homeMain">
         <h2>Index</h2>
+        <a href="/new">
+            <button>
+                Add Item
+            </button>
+        </a>
         <ul>
             <% for(let i = 0; i < collectables.length; i++) {%>
                 <li>
-                    <a href="/collectables/<%=collectables[i]._id;%>">
+                    <a href="/<%=collectables[i]._id;%>">
                         <%=collectables[i].name;%>
                     </a>
                 </li>
@@ -27,8 +27,6 @@
         </ul>
 
     </div>
-    <div id="footerContainer">
-
-    </div>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

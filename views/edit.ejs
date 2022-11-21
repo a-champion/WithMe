@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %>
+    <div id="newContainer">
+        <h2>Add to Collection</h2>
+        <form action="/" method="POST"></form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="type">
+                            Type
+                        </label>
+                    </td>
+                    <td><input type="text" name="type" placeholder="statue,pop,pin,etc." id="type"/>
+                    </td>
+                    <td>
+                        <label for="name">
+                            Name
+                        </label>
+                    </td>
+                    <td><input type="text" name="name" placeholder="name of item" id="name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="value">
+                            Value
+                        </label>
+                    </td>
+                    <td><input type="number" name="value" id="value"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="owned">
+                            Owned
+                        </label>
+                    </td>
+                    <td><input type="checkbox" name="owned" id="owned"/>
+                    </td>
+                    <td>
+                        <label for="unopened">
+                            Unopened
+                        </label>
+                    </td>
+                    <td><input type="checkbox" name="unopened" id="unopened"/>
+                    </td>
+                </tr>
+                
+            </table>
+        The fields below are optional.<br/>
+            <table>
+                <tr>
+                    <td>
+                        <label for="brand">
+                            Brand
+                        </label>
+                    </td>
+                    <td><input type="text" name="brand" placeholder="Bandai, Funko, etc." id="brand"/>
+                    </td>
+                    <td>
+                        <label for="franchise">
+                            Franchise
+                        </label>
+                    </td>
+                    <td><input type="text" name="franchise" placeholder="franchise or IP i.e. One Piece, Pusheen, etc." id="franchise"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="width">
+                            Width(inches)
+                        </label>
+                    </td>
+                    <td><input type="number" name="width" id="width" min="0"/>
+                    </td>
+                    <td>
+                        <label for="height">
+                            Height(inches)
+                        </label>
+                    </td>
+                    <td><input type="number" name="height" id="height" min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="scale">
+                            Scale
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" name="scale" placeholder="scale i.e. 1/7" id="scale"/>
+                    </td>
+                    <td>
+                        <label for="quantity">
+                            Quantity
+                        </label>
+                    </td>
+                    <td>
+                        <input type="number" name="quantity" id="quantity" min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="boxed">
+                            Boxed
+                        </label>
+                    </td>
+                    <td><input type="checkbox" name="boxed" id="boxed"/>
+                    </td>
+                    <td>
+                        <label for="custom">
+                            Custom
+                        </label>
+                    </td>
+                    <td><input type="checkbox" name="custom" id="custom"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="condition">
+                            Condition
+                        </label>
+                    </td>
+                    <td><input type="text" name="condition" id="condition"/>
+                    </td>
+                    <td>
+                        <label for="image">
+                            Image(url)
+                        </label>
+                    </td>
+                    <td><input type="text" name="image" id="image"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="note">
+                            Notes
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" name="note" placeholders="These are where you can keep longer notes" id="note"/>
+                    </td>
+                    <td>
+                        <label for="tags">
+                            Tags
+                        </label>
+                    </td>
+                    <td><input type="text" name="tags" placeholder="tag1, tag2, tag3.." id="tags"/>
+                    </td>
+                </tr>
+           
+        </table>
+        <input type="submit" name="done" value="done"/><br/>
+        <input type="submit" name="Add More" value="keepAdding"/>
+    </form>
+
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

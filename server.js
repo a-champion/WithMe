@@ -14,10 +14,14 @@ if(process.env.PORT){
     PORT = process.env.PORT
 }
 
+app.use(express.urlencoded({extended: true}));
+// app.use(express.json());
+
+
 //redirect to 
 //controller
-const appController = require('./controllers/withMe.js');
-app.use(appController);
+const collectionController = require('./controllers/withMe.js');
+app.use('/', collectionController);
 
 //method override
 // const methodOverride = require('method-override');
@@ -31,10 +35,6 @@ app.use(appController);
 
 //     });
 // }
-
-// body parser
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
 //static
 // app.use(express.static('public'));
