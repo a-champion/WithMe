@@ -20,6 +20,7 @@ const collectableSchema = new Schema({
     tags: {type: [String], required: false},
     height: {type: Number, required: false},
     width: {type: Number, required: false},
+    likes: {type: Number, required: false, min: 0}
 });
 
 const collection = mongoose.model('Collectable', collectableSchema);
