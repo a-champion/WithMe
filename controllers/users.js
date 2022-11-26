@@ -1,9 +1,21 @@
-const express =require('express');
-const router = express.Router();
+const express = require('express');
+const users = express.Router();
 const User = require('../models/users.js');
+const bcrypt = require('bcrypt');
 
-router.get('/', (req, res) => {
-    res.render('userLogin.ejs');
+users.get('/new', (req, res) => {
+    res.render('users/newUser.ejs', {
+        currentUser: req.session.currentUser
+    });
 });
 
-module.exports = router;
+users.post('/', (req, res) => {
+    console.log(req.body);
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    User.create(req.body, (err, createdUser) => {
+        console.log('user is created', createdUser);
+        res.redirect('/users');
+    })
+})
+
+module.exports = users;

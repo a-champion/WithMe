@@ -1,24 +1,27 @@
 const express = require('express');
-const router = express.Router();
+const collectables = express.Router();
 const Collectable = require('../models/collectables.js');
 // const data = require('../models/schema.js');
 
 // Index / Home
-router.get('/', (req, res) => {
+collectables.get('/', (req, res) => {
     Collectable.find({}, (error, allCollectables) => {
-        res.render('index.ejs', {
-            collectables: allCollectables
+        res.render('collections/index.ejs', {
+            collectables: allCollectables,
+            currentUser: req.session.currentUser
         });
     });
 });
 
 //new
-router.get('/new', (req, res) => {
-    res.render('new.ejs');
+collectables.get('/new', (req, res) => {
+    res.render('collections/new.ejs',{
+        currentUser: req.session.currentUser
+    });
 });
 
 // create
-router.post('/', (req, res) => {
+collectables.post('/', (req, res) => {
     if(req.body.owned === 'on'){
         req.body.owned = true;
     } else {
@@ -39,8 +42,12 @@ router.post('/', (req, res) => {
     } else {
         req.body.custom = false;
     }
-    let stringToSplit = req.body.tags;
-    (req.body.tags) = stringToSplit.split(',');
+    if(req.body.tags !== ''){
+        let stringToSplit = req.body.tags;
+        (req.body.tags) = stringToSplit.split(',');
+    } else if(req.body.tags === ''){
+
+    }
 
     Collectable.create(req.body, (err, newCollectable) => {
         if(req.body.done === 'Done') {
@@ -52,10 +59,11 @@ router.post('/', (req, res) => {
 });
 
 //read
-router.get('/:id', (req, res) => {
+collectables.get('/:id', (req, res) => {
     Collectable.findById(req.params.id, (err, foundCollectable) => {
-        res.render('show.ejs', {
-            collectable: foundCollectable
+        res.render('collections/show.ejs', {
+            collectable: foundCollectable,
+            currentUser: req.session.currentUser
         });
         // res.render('show.ejs', {
             // collectables: foundCollectable
@@ -63,19 +71,20 @@ router.get('/:id', (req, res) => {
 });
 
 //edit
-router.get('/:id/edit', (req, res) => {
+collectables.get('/:id/edit', (req, res) => {
     Collectable.findById(req.params.id, (err, foundCollectable) => {
         res.render(
-            'edit.ejs', 
+            'collections/edit.ejs', 
             {
-                collectable: foundCollectable
+                collectable: foundCollectable,
+                currentUser: req.session.currentUser
             }
         );
     });
 });
 
 //update
-router.put('/:id', (req, res) => {
+collectables.put('/:id', (req, res) => {
     if(req.body.owned === 'on'){
         req.body.owned = true;
     } else {
@@ -104,7 +113,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete
-router.delete('/:id', (req, res) => {
+collectables.delete('/:id', (req, res) => {
     Collectable.findByIdAndRemove(req.params.id, (err, deletedData) => {
         res.redirect('/collection');
     })
@@ -147,6 +156,6 @@ router.delete('/:id', (req, res) => {
 //     )
 // });
 
-module.exports = router;
+module.exports = collectables;
 
 

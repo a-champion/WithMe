@@ -1,58 +1,56 @@
 // Dependencies //
-//express
+//////////////////////////////////////////
 const express = require('express');
 const app = express();
-
-// mongoose
-// require('dotenv/config'); this is another way to keep enviornment variables from being viewed that i came across.
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-//for encryption
-const bcrypt = require('bcrypt');
-//session
 const session = require('express-session');
+const methodOverride = require('method-override');
+require('dotenv').config();
 
 //config
-let PORT = 3000;
+//////////////////////////////////////////
+let PORT = process.env.PORT;
+const mongodbURI = process.env.MONGODBURI;
 if(process.env.PORT){
     PORT = process.env.PORT
 }
-//models
-const User = require('./models/users.js');
 
-//body parser
+// middleware //
+///////////////////////////////
 app.use(express.urlencoded({extended: true}));
+
 app.use(express.json());
-
-//method override
-const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
+app.use(
+    session({
+        secret:process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
 
-app.get('/', (req, res) => {
-    res.redirect('/user');
-});
+//static
+app.use(express.static('public'));
 
-//redirect to 
-//controller
+//models
+
+//controllers
 const collectionController = require('./controllers/withMe.js');
 app.use('/collection', collectionController);
 
+const sessionsController = require('./controllers/sessions_Controller.js');
+app.use('/sessions', sessionsController);
+
+
 const userController = require('./controllers/users.js');
-app.use('/user', userController);
+app.use('/users', userController);
 
+//root redirect to login
+app.get('/', (req, res) => {
+    res.render('landing.ejs', {currentUser: req.session.currentUser});
+});
 
-
-//build path
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static('clients/build'));
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); //relative path (import module path?)
-
-//     });
-// }
-
-//static
-// app.use(express.static('public'));
 
 // test
 // app.get('/', (req, res) => {
@@ -66,10 +64,12 @@ app.listen(PORT, () => {
     console.log('listening...');
 });
 
-mongoose.connect('mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/collectables?retryWrites=true&w=majority', () => {
+mongoose.connect(mongodbURI, () => {
     console.log('connected to mongo atlas');
 });
 
 db.on('error', (err) => console.log(err.message));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
+
+// MONGODBURI=mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/?retryWrites=true&w=majority
