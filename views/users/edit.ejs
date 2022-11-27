@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <div id="newContainer">
+        <h2>Edit Account Information</h2>
+        <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <label for="name">
+                            First name
+                        </label>
+                    </td>
+                    <td><input type="text" name="name" value="<%=user.name;%>" id="name"/>
+                    </td>
+                    <td>
+                        <label for="lname">
+                            Last Name
+                        </label>
+                    </td>
+                    <td><input type="text" name="lname" value="<%=user.lname;%>" id="lname"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="birthday">
+                            birthday
+                        </label>
+                    </td>
+                    <td><input type="date" name="birthday" value="<%=user.birthday;%>" id="birthday"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">
+                            Email
+                        </label>
+                    </td>
+                    <td><input type="text" name="email" id="email"/>
+                    </td>
+                    <td>
+                        <label for="mobile">
+                            Mobile
+                        </label>
+                    </td>
+                    <td><input type="text" name="mobile" id="mobile"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="interests">
+                            Interests
+                        </label>
+                    </td>
+                    <td><input type="text" name="interests" value="<%=user.interests;%>" id="interests"/>
+                    </td>
+                    <!-- <td>
+                        <label for="collections">
+                            Collections
+                        </label>
+                    </td>
+                    <td><input type="" name="collections" value="<user.collections;>" id="collections"/>
+                    </td> -->
+                </tr>
+            </table>
+            <input type="submit" value="Submit Changes"/>
+        </form>
+
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
