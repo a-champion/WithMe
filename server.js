@@ -30,11 +30,12 @@ app.use(
     })
 );
 
+
 //static
 app.use(express.static('public'));
 
 //models
-
+const User = require('./models/users.js');
 //controllers
 const collectionController = require('./controllers/withMe.js');
 app.use('/collection', collectionController);
@@ -48,7 +49,12 @@ app.use('/users', userController);
 
 //root redirect to login
 app.get('/', (req, res) => {
-    res.render('landing.ejs', {currentUser: req.session.currentUser});
+    User.find({}, (err, allUsers) => {
+        res.render('landing.ejs', {
+            users: allUsers,
+            currentUser: req.session.currentUser
+        });
+    });
 });
 
 
@@ -71,5 +77,3 @@ mongoose.connect(mongodbURI, () => {
 db.on('error', (err) => console.log(err.message));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
-
-// MONGODBURI=mongodb+srv://vile:Achampionbrah01@project0.4hkgkbk.mongodb.net/?retryWrites=true&w=majority

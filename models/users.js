@@ -10,8 +10,7 @@ const userSchema = new Schema({
     birthday:{ type: Date, required: false},
     email:{ type:String, unique:true, required: false, trim: true},
     mobile: { type: String, required: false},
-    interests:{type: [ String ], required: false},
-    collections:{type: [Collectable.schema], required: false}
+    interests:{type: [ String ], required: false}
 }, {timestamps:true});
 
 const User = mongoose.model('User', userSchema);

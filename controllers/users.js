@@ -9,7 +9,7 @@ users.get('/new', (req, res) => {
     });
 });
 
-users.get('/', (req, res) => {
+users.get('/:id', (req, res) => {
     if (req.session.currentUser) {
         User.findById(req.params.id, (err, foundUser) => {
             res.render('users/show.ejs', {
@@ -35,11 +35,22 @@ users.get('/:id/edit', (req, res) => {
     }
 });
 
+users.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, 
+        {
+            new: true,
+            timestamp: true
+        }, (err, updatedUser) => {
+            res.redirect('/users')
+        });
+});
+
 users.post('/', (req, res) => {
-    console.log(req.body);
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    console.log(req.body);
     User.create(req.body, (err, createdUser) => {
         console.log('user is created', createdUser);
+        console.log(err);
         res.redirect('/sessions/new');
     })
 })

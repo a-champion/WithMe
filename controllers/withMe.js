@@ -3,6 +3,16 @@ const collectables = express.Router();
 const Collectable = require('../models/collectables.js');
 // const data = require('../models/schema.js');
 
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next();
+    } else {
+        res.redirect('/sessions/new');
+    }
+}
+
+collectables.use(isAuthenticated);
+
 // Index / Home
 collectables.get('/', (req, res) => {
     Collectable.find({}, (error, allCollectables) => {

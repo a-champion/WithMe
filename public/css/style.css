@@ -1,0 +1,176 @@
+* {
+    font-family: Arial, Georgia, Serif;
+}
+
+#collectableItem {
+    height: auto; 
+    width: auto;
+    max-width: 300px; 
+    max-height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.collectableItems {
+    height: auto; 
+    width: auto;
+    max-width: 150px; 
+    max-height: 150px;
+}
+
+
+#headerAsideContainer {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    border-top: 0;
+    padding-top: 0;
+    width: 100vw;
+    height: 75px;
+    background-color: darkorchid;
+}
+
+.myLinks {
+    float: right;
+    /* display: none; */
+}
+
+#headerAsideContainer li{
+    margin: 5px;
+    display: inline;
+}
+
+#headerAsideContainer li a{
+    padding: .5em;
+    margin: .50em;
+    float: right;
+    text-decoration: none;
+    color: white;
+}
+
+.greet {
+    float: left;
+    font-size: larger;
+    color: white;
+}
+
+.btns {
+    border:none;
+    margin-top: 15px;
+    background-color: darkorchid;
+    color: white;
+}
+
+.add {
+    border: none;
+    background-color: darkorchid;
+    color: white;
+    float: right;
+}
+
+.dblBtns {
+    margin-top: 5px;
+    border:none;
+    background-color: darkorchid;
+    color: white;
+}
+
+#indexLi {
+    display: block;
+}
+
+
+.pageTitle {
+    color:white;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px plum solid;
+}
+
+
+.container {
+    padding-left: 9%;
+    padding-right: 9%;
+    height: 100%;
+    color: white;
+    background-color: darkmagenta;
+}
+.landing {
+    padding-left: 9%;
+    padding-right: 9%;
+    height: 100vh;
+    color: white;
+    background-color: darkmagenta;
+}
+.subContainer{
+    background-color: darkslateblue;
+    border: 1px;
+    padding: 5%;
+    width: 98%;
+    height:100%;
+}
+
+.link {
+    text-decoration: underline;
+    color: white;
+}
+.link:hover{
+    color: orchid;
+}
+
+.sLabel{
+    display: inline-block;
+    width: 35%;
+}
+
+.form {
+    display: inline-block;
+}
+
+.editForm table, thead, tr, td{
+    display: block;
+    color: white;
+}
+
+.deets {
+    margin-right: 30%;
+    text-align: center;
+    float: right;
+}
+
+/* #table {
+    display: block;
+} */
+@media (min-width: 600px) {
+    .form {
+        display: block;
+    }
+
+    .editForm table, thead, tr, td{
+        display: block;
+        color: white;
+    }
+
+    .eInput{
+        display: block;
+        width: 85%;
+        margin-right: 0;
+    }
+    #indexLi {
+        display: inline-block;
+        margin: 5% 5% 5% 5%;
+    }
+    .deets {
+        margin-right: 33%;
+        text-align: center;
+        float: right;
+    }
+    tr , td{
+        display: inline-block;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}

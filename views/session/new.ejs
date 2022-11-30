@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <div id="mainContent">
-        <div id="userLogin">
+    <div class="container">
+        <div class="subContainer">
+            <div id="userLogin">
+            
+                <form action="/sessions" method="POST">
+                    <div id="createUser">
+                        <label for="username" class="sLabel"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="username" required class="sInput"><br/>
         
-            <form action="/sessions" method="POST">
-                <div id="createUser">
-                    <label for="username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required><br/>
-    
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required><br/>
-                    
-                    <input type="submit" value="Login"><br/>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
-                <div class="subLogin">
-                    <button>Cancel</button>
-                    <span>Forgot<a href="#"> password</a>?</span>
-                    <span>New <a href='/users/new'>user</a>?</span>
-                </div>
-            </form>
+                        <label for="password" class="sLabel"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" required class="sInput"><br/>
+                        
+                        <input type="submit" value="Login" class="btns"><br/>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <div class="subLogin">
+                        <span>Forgot <a href="#" class="link">password</a>?</span>
+                        <span>New <a href='/users/new' class="link">user</a>?</span>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </div>
     <%- include('../partials/footer.ejs') %>
     

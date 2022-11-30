@@ -5,7 +5,6 @@ const collectableSchema = new Schema({
     type: {type: String, required: true},
     name: {type: String, required: true},
     value: {type: Number, required: true},
-    owned: {type: Boolean, required: true},
     unopened: {type: Boolean, required: true},
     /////////////////////////////////////////
     boxed: {type: Boolean, required: false},

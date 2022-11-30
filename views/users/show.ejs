@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
     <div id="userContent">
+        <h1>Profile</h1>
+        <h2><%=currentUser.username;%></h2>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><%=currentUser.name;%></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><%=currentUser.email;%></td>
+            </tr>
+            <tr>
+                <td>Birthday</td>
+                <td><%=currentUser.birthday;%></td>
+            </tr>
+        </table>
         
     </div>
     <%- include('../partials/footer.ejs') %>

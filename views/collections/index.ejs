@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <div id="container">
-        <h2>Index</h2>
-        <a href="/collection/new">
-            <button>
-                Add Item
-            </button>
-        </a>
-        <ul>
-            <% for(let i = 0; i < collectables.length; i++) {%>
-                <li>
-                    <a href="/collection/<%=collectables[i]._id;%>">
-                        <%=collectables[i].name;%>
-                    </a><br/>
-                    <a href="/collection/<%=collectables[i].id%>/edit">Edit</a>
-                    <form action="/collection/<%=collectables[i].id%>?_method=DELETE" method="POST">
-                        <input type="submit" value="DELETE"/>
-                    </form>
-                </li>
+    <div class="container">
+        <div class="subContainer">
+            <h2 class="pageTitle">Index</h2>
+            <a href="/collection/new">
+                <button class="add btns">
+                    Add Item
+                </button>
+            </a>
+            <ul>
+                <% for(let i = 0; i < collectables.length; i++) {%>
+                    <li id="indexLi">
+                        <img src="<%=collectables[i].image;%>" class="collectableItems"></br>
+                        <a href="/collection/<%=collectables[i]._id;%>" class="link">
+                            <%=collectables[i].name;%>
+                        </a>
+                        <span>valued at $<%=collectables[i].value;%></span><br/>
+                        <a href="/collection/<%=collectables[i].id%>/edit"><button class="dblBtns">Edit</button></a>
+                        <form action="/collection/<%=collectables[i].id%>?_method=DELETE" method="POST" class="form">
+                            <input type="submit" value="DELETE" class="dblBtns"/>
+                        </form>
+                    </li>
 
-            <% } %>
-        </ul>
-
+                <% } %>
+            </ul>
+        </div>
     </div>
     <%- include('../partials/footer.ejs') %>
 </body>

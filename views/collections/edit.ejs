@@ -1,178 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <div id="newContainer">
-        <h2>Edit Item</h2>
-        <form action="/collection/<%=collectable.id%>?_method=PUT" method="POST">
-            <table>
-                <tr>
-                    <td>
-                        <label for="type">
-                            Type
-                        </label>
-                    </td>
-                    <td><input type="text" name="type" value="<%=collectable.type;%>" id="type"/>
-                    </td>
-                    <td>
-                        <label for="name">
-                            Name
-                        </label>
-                    </td>
-                    <td><input type="text" name="name" value="<%=collectable.name;%>" id="name"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="value">
-                            Value
-                        </label>
-                    </td>
-                    <td><input type="number" name="value" value="<%=collectable.value;%>" id="value"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="owned">
-                            Owned
-                        </label>
-                    </td>
-                    <td><input type="checkbox" name="owned" id="owned"
-                        <% if(collectable.owned === true) { %>
-                            checked
-                        <% } %>/>
-                    </td>
-                    <td>
-                        <label for="unopened">
-                            Unopened
-                        </label>
-                    </td>
-                    <td><input type="checkbox" name="unopened" id="unopened"
-                        <% if(collectable.unopened === true) { %>
-                            checked
-                        <% } %>/>
-                    </td>
-                </tr>
-                
-            </table>
-        The fields below are optional.<br/>
-            <table>
-                <tr>
-                    <td>
-                        <label for="brand">
-                            Brand
-                        </label>
-                    </td>
-                    <td><input type="text" name="brand" value="<%=collectable.brand;%>" id="brand"/>
-                    </td>
-                    <td>
-                        <label for="franchise">
-                            Franchise
-                        </label>
-                    </td>
-                    <td><input type="text" name="franchise" value="<%=collectable.franchise;%>" id="franchise"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="width">
-                            Width(inches)
-                        </label>
-                    </td>
-                    <td><input type="number" name="width" value="<%=collectable.width;%>" id="width" min="0"/>
-                    </td>
-                    <td>
-                        <label for="height">
-                            Height(inches)
-                        </label>
-                    </td>
-                    <td><input type="number" name="height" value="<%=collectable.height;%>" id="height" min="0"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="scale">
-                            Scale
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="scale" value="<%=collectable.scale;%>" id="scale"/>
-                    </td>
-                    <td>
-                        <label for="quantity">
-                            Quantity
-                        </label>
-                    </td>
-                    <td>
-                        <input type="number" name="quantity" value="<%=collectable.quantity;%>" id="quantity" min="0"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="boxed">
-                            Boxed
-                        </label>
-                    </td>
-                    <td><input type="checkbox" name="boxed" id="boxed"
-                        <% if(collectable.boxed === true) { %>
-                            checked
-                        <% } %>/>
-                    </td>
-                    <td>
-                        <label for="custom">
-                            Custom
-                        </label>
-                    </td>
-                    <td><input type="checkbox" name="custom" id="custom"
-                        <% if(collectable.custom === true) { %>
-                            checked
-                        <% } %>/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="condition">
-                            Condition
-                        </label>
-                    </td>
-                    <td><input type="text" name="condition" value="<%=collectable.condition;%>" id="condition"/>
-                    </td>
-                    <td>
-                        <label for="image">
-                            Image(url)
-                        </label>
-                    </td>
-                    <td><input type="text" name="image" value="<%=collectable.image%>" id="image"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="note">
-                            Notes
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="note" value="<%=collectable.note;%>" id="note"/>
-                    </td>
-                    <td>
-                        <label for="tags">
-                            Tags
-                        </label>
-                    </td>
-                    <td><input type="text" name="tags" value="<%=collectable.tags;%>" id="tags"/>
-                    </td>
-                </tr>
-           
-            </table>
-            <input type="submit" value="Submit Changes"/>
-        </form>
-
+    <div class="container">
+        <div class="subContainer">
+            <h2>Edit Item</h2>
+            <form action="/collection/<%=collectable.id%>?_method=PUT" method="POST" class="editForm">
+                <table id="table">
+                    <tr>
+                        <td>
+                            <label for="type" class="eLabel">
+                                Type
+                            </label>
+                        </td>
+                        <td><input type="text" name="type" value="<%=collectable.type;%>" id="type" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="name" class="eLabel">
+                                Name
+                            </label>
+                        </td>
+                        <td><input type="text" name="name" value="<%=collectable.name;%>" id="name" class="eInput"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="value" class="eLabel">
+                                Value $
+                            </label>
+                        </td>
+                        <td><input type="number" name="value" value="<%=collectable.value;%>" id="value" class="eInput"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="unopened" class="eLabel">
+                                Unopened
+                            </label>
+                        </td>
+                        <td><input type="checkbox" name="unopened" id="unopened"
+                            <% if(collectable.unopened === true) { %>
+                                checked
+                            <% } %>/>
+                        </td>
+                    </tr>
+                    
+                </table>
+            The fields below are optional.<br/>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="brand">
+                                Brand
+                            </label>
+                        </td>
+                        <td><input type="text" name="brand" value="<%=collectable.brand;%>" id="brand" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="franchise">
+                                Franchise
+                            </label>
+                        </td>
+                        <td><input type="text" name="franchise" value="<%=collectable.franchise;%>" id="franchise" class="eInput"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="width">
+                                Width(inches)
+                            </label>
+                        </td>
+                        <td><input type="number" name="width" value="<%=collectable.width;%>" id="width" min="0" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="height">
+                                Height(inches)
+                            </label>
+                        </td>
+                        <td><input type="number" name="height" value="<%=collectable.height;%>" id="height" min="0" class="eInput"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="scale">
+                                Scale
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="scale" value="<%=collectable.scale;%>" id="scale" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="quantity">
+                                Quantity
+                            </label>
+                        </td>
+                        <td>
+                            <input type="number" name="quantity" value="<%=collectable.quantity;%>" id="quantity" min="0" class="eInput"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="boxed">
+                                Boxed
+                            </label>
+                        </td>
+                        <td><input type="checkbox" name="boxed" id="boxed"
+                            <% if(collectable.boxed === true) { %>
+                                checked
+                            <% } %> class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="custom">
+                                Custom
+                            </label>
+                        </td>
+                        <td><input type="checkbox" name="custom" id="custom"
+                            <% if(collectable.custom === true) { %>
+                                checked
+                            <% } %>/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="condition">
+                                Condition
+                            </label>
+                        </td>
+                        <td><input type="text" name="condition" value="<%=collectable.condition;%>" id="condition" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="image">
+                                Image(url)
+                            </label>
+                        </td>
+                        <td><input type="text" name="image" value="<%=collectable.image%>" id="image"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="note">
+                                Notes
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="note" value="<%=collectable.note;%>" id="note" class="eInput"/>
+                        </td>
+                        <td>
+                            <label for="tags">
+                                Tags
+                            </label>
+                        </td>
+                        <td><input type="text" name="tags" value="<%=collectable.tags;%>" id="tags" class="eInput"/>
+                        </td>
+                    </tr>
+            
+                </table>
+                <input type="submit" value="Submit Changes" class="btns"/>
+                <a href="/collection/<%=collectable.id%>"><button class="btns">Return</button></a>
+            </form>
+        </div>
     </div>
     <%- include('../partials/footer.ejs') %>
 </body>

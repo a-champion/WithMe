@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <div id="showCollectable">
-        <h2><%=collectable.name;%></h2>
-        <h3><%=collectable.type;%></h3>
-        <% if(collectable.image === ''){ %>
-        <% } else if(collectable.image) {%>
-            <img src='<%=collectable.image;%>'>
-        <% } %>
-        <table>
-            <thead>
+    <div class="container">
+        <div class="subContainer">
+            <h2><%=collectable.name;%></h2>
+            <h3><%=collectable.type;%></h3>
+            <% if(collectable.image === ''){ %>
+            <% } else if(collectable.image) {%>
+                <img src='<%=collectable.image;%>' id="collectableItem">
+            <% } %>
+            <table class="table">
+                <thead class="deets">
+                    <tr class="deets">
+                        <td class="deets">
+                        Details
+                        </td>
+                    </tr>
+                </thead>
                 <tr>
                     <td>
-                    Details
+                        Name:
+                    </td>
+                    <td>
+                        <%=collectable.name;%>
+                    </td>
+                    <td>
+                        Franchise:
+                    </td>
+                    <td>
+                        <%=collectable.franchise;%>
                     </td>
                 </tr>
-            </thead>
-            <tr>
-                <td>
-                    Name:
-                </td>
-                <td>
-                    <%=collectable.name;%>
-                </td>
-                <td>
-                    Franchise:
-                </td>
-                <td>
-                    <%=collectable.franchise;%>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Value:
-                </td>
-                <td>
-                    <%=collectable.value;%>
-                </td>
-                <td>
-                    Brand:
-                </td>
-                <td>
-                    <%=collectable.brand;%>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Owned:
-                </td>
-                <td>
-                    <%=collectable.owned;%>
-                </td>
-            </tr>
-        </table>
-
-
+                <tr>
+                    <td>
+                        Value:
+                    </td>
+                    <td>
+                        $<%=collectable.value;%>
+                    </td>
+                    <td>
+                        Brand:
+                    </td>
+                    <td>
+                        <%=collectable.brand;%>
+                    </td>
+                </tr>
+            </table>
+            <a href="/collection/<%=collectable.id%>/edit"><button class="btns">Edit</button></a>
+            <a href="/collection/"><button class="btns">Return</button></a>
+        </div>
     </div>
     <%- include('../partials/footer.ejs') %>
 </body>

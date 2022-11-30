@@ -1,16 +1,16 @@
 <div id="headerAsideContainer">
-    <ul class="right">
+    <ul class="links">
         <% if (currentUser) { %>
-        <li>Welcome <%= currentUser.username %></li>
-        <li><a href="/users/<%=currentUser._id%>/edit">Update Account</a></li>
-        <li>
+        <li class="greet">Welcome <%= currentUser.username %></li>
+        <li class="myLinks"><a href="/users/<%=currentUser._id%>/edit" class="myLinks">Update Account</a></li>
+        <li class="myLinks">
           <form action="/sessions?_method=DELETE" method="POST">
-            <input type="submit" value="Log Out" class="btn-small red" />
+            <input type="submit" value="Log Out" class="myLinks btns"  />
           </form>
         </li>
         <% } else { %>
-        <li><a href="/users/new">Sign Up</a></li>
-        <li><a href="/sessions/new">Log In</a></li>
+        <li><a href="/users/new" class="myLinks">Sign Up</a></li>
+        <li><a href="/sessions/new" class="myLinks">Log In</a></li>
         <% } %>
     </ul>
 </div>
