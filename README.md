@@ -3,9 +3,11 @@ Full-stack application using Node.js, Mongoose, Express, and EJS
 
 MVC file structure
 2 models
-1 for collectables 
-1 for users
-partials contain header and footer login for user with authentication using bcrypt and express sessions.
+-collectables 
+-users
+
+partials contain header login for user with authentication using bcrypt and express sessions and footer(not completed).
+
 REST API with 7 RESTful routes and full CRUD.
 
 used bootstrap and custom css.
